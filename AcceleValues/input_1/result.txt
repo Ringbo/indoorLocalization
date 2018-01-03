@@ -1,0 +1,1 @@
+lowess:51 Deviation rate:1.92308%
