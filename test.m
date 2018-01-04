@@ -20,17 +20,23 @@ global CURRENT_SETP;CURRENT_SETP = 0; %存储当前步数信息
 global peakOfWave;peakOfWave = 0;
 global countPeak;countPeak = 0;
 global dataConStr;
+global orientOfLastPeak;orientOfLastPeak = 1;
+global orientOfNow;orientOfNow = 0;
+global OrientDate;
+global X;X = zeros(300,1);
+global Y;Y = zeros(300,1);
 dataNum = 1;
 for i = 1:dataNum
     dataConStr = 'AcceleValues/input_'; 
     dataConStr = strcat(dataConStr,num2str(i));%转字符串
     AccleDate = importdata(strcat(dataConStr, '/Accledate.txt'));
+    OrientDate = importdata(strcat(dataConStr, '/Direcdate.txt'));
     Acctime = int64(AccleDate(:,1));
     x = AccleDate(:,2);
     y = AccleDate(:,3);
     z = AccleDate(:,4);
     average = sqrt(power(x,2)+power(y,2)+power(z,2));
-    plot(average)
+    %plot(average)
     hold on
     
     % averageSmooth = smooth(average,'rlowess');
@@ -55,7 +61,10 @@ for i = 1:dataNum
 %     
 %     averageSmooth = smooth(average,'rloess');
 %     OutputResult(averageSmooth,'rloess',Acctime);
-    
+for i = 1:CURRENT_SETP
+    %plot(X(i),Y(i),'*');
+end
+
 end
 
 

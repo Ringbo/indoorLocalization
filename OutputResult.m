@@ -12,7 +12,7 @@ fOutput = fopen([dataConStr,'/result.txt'],'a+');
 SIZE = size(Acctime);
 SIZE = SIZE(1);
 for i = 1:SIZE
-    detectorNewStep(CurAverage(i),Acctime(i))
+    detectorNewStep(CurAverage(i),Acctime(i),i)
 end
 rate = double(abs(CURRENT_SETP - step)/step);
 fprintf(fOutput,'%s:%g Deviation rate:%g%%\r\n',way,CURRENT_SETP,rate*100);
